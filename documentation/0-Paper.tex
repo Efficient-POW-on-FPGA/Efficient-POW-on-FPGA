@@ -1,0 +1,52 @@
+% Diese Zeile bitte -nicht- aendern.
+\documentclass[course=eragp]{aspdoc}
+\usepackage[parfill]{parskip}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\usepackage[toc,page,title,titletoc,header]{appendix}
+\pgfplotsset{compat=1.15}
+
+\author{ Eke Timur \and Schapeler Nicolas \and Starnecker Christoph \and Weiser Florian}
+\date{Summer Semester 2020 - Winter Semester 2020/21}
+
+\title{Efficient FPGA Implementation of Blockchain Operations}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\newcommand{\maxHashrateNum}{50.0}
+\newcommand{\maxHashrate}{\maxHashrateNum~\textit{MHash/s}}
+
+\input{1-Introduction}
+
+\input{2-Background}
+
+\input{3-Basic-architecture}
+
+\input{4-Optimizations}
+
+\input{5-Correctness}
+
+\input{6-Performance}
+
+\input{7-Summary}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{0-Paper}
+
+\newpage
+\listoftables
+
+\newpage
+\listoffigures
+
+\end{document}

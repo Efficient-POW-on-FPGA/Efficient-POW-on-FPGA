@@ -1,0 +1,20 @@
+\section{Introduction}
+
+In recent years blockchain technologies and especially their most common use case, cryptocurrencies, have gained more and more public attention.
+One of the first implementations of blockchain was the cryptocurrency Bitcoin.
+It not only represents an opportunity for exchanging digital money but also for earning money by providing the computing power that keeps the underlying blockchain running. 
+This money is earned in form of an incentive for solving a certain computational problem.
+Since this problem is very narrow, people started using not only CPUs but also GPUs, FPGAs, and ASICs to solve it more efficiently.
+
+FPGAs provide the possibility to create hardware that is on the one hand more specialized than a GPU or CPU but on the other hand more flexible than an ASIC. This allows to implement further blockchain algorithms in the future and hence to switch to the most lucrative one easily. Therefore it is an interesting challenge to now implement a circuit capable of working efficiently on the Bitcoin blockchain, which is currently the most common one.
+
+% What we really want.
+
+In the following, we will describe our outcomes from working on such an implementation for a given FPGA board.
+First, we give a short introduction to blockchain, Bitcoin, and the SHA-256-Algorithm.
+Second, we will depict our base architecture and the communication within the FPGA and to the host.
+Based on this architecture, we will explain which different approaches we used to increase our performance.
+We further depict how to show the correctness of our implementation.
+Eventually, we have a look at the effects of different optimizations on the performance and compare our FPGA-based architecture to other implementations.
+
+% - Motivation: Warum lohnt es sich das Thema zu betrachten?

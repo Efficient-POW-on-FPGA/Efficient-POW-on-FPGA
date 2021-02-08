@@ -1,0 +1,18 @@
+\section{Summary}
+
+%- Allgemeine Zusammenfassung
+%- Anbindung an Bitcoin Netzwerk (wirklich ein Bitcoin minen)
+%- (Welche Änderungen ergeben sich aus einem größeren Board?)
+%- Ausblick
+
+To sum up, we have seen that Bitcoin makes use of blockchain technology to avoid double spendings and unwanted modifications of the transaction history. The Bitcoin blockchain itself uses a SHA-256d hash which has to fall below a specified target as Proof-of-Work. Consequently, the purpose of Bitcoin mining is to calculate the hashes of slightly altered block headers with brute-force until one of these hashes drops below the target. Our project aimed to implement such a Bitcoin mining algorithm on an FPGA board and optimize its efficiency.
+
+To do so, we structured our implementation in mining core entities, that can calculate hashes in parallel. The 64 rounds of the SHA-256 algorithm are performed by padder, extender and compressor components. A mining core entity combines two of these SHA-256 stages with a nonce generator and a comparator. Our optimizations mostly focused on the extender and compressor components, as they were the bottleneck in terms of throughput and occupied the largest area on the FPGA board.
+
+In the previous sections we have seen various optimizations that increased the performance of a Bitcoin Proof-Of-Work implementation significantly. On the algorithmic side, we were able to calculate two rounds per clock cycle and to exploit the length extension vulnerability of SHA-256. On the hardware-specific side, we improved the timing to speed up the hash rate of a single mining core and improved the area utilization to fit more mining cores onto the FPGA board. Some of the performed optimizations had to be weighed against others because they weren't compatible.
+
+Before measuring the effectiveness of optimizations, it is especially important to validate their correctness. Our CI pipeline executes simulation unit tests for the hash components and for the whole mining core entity. Furthermore, automatic deployment tests are conducted, which check that no timing-related problems occur.
+
+All in all, we were able to reach a hash rate of 50.0 MHash/s on a Diligent Arty A7-100T board, compared to 0.25 MHash/s without any optimizations. 50 MHash/s is better than most CPUs and not too far below the hash rate of most GPUs. When compared to CPUs and GPUs, our implementation especially shines in terms of its low power consumption, resulting in considerably better mining efficiency. However, the hash rate of an FPGA - as expected - is substantially less than that of a Bitcoin-mining ASIC, making FPGA mining quite inefficient. Thus, even connecting a larger FPGA board to the Bitcoin network wouldn't be economically viable.
+
+The described optimizations are nevertheless relevant because most of them can also be applied when designing a Bitcoin mining ASIC. Additionally, we have shown that iterative hashing algorithms can have a significantly better hashing efficiency on FPGA boards than on CPUs and GPUs. This might be particularly interesting for smaller or new Proof-Of-Work based cryptocurrencies, for which ASIC miners aren't available.

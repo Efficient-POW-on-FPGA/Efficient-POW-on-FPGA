@@ -1,0 +1,42 @@
+\section{Correctness}
+While we implement different optimizations, it is important to verify that the correctness of the computation is maintained. This is done through a suite of automated and manual tests, which are run for each version.
+\subsection{Unit Testing}
+
+To test the correctness of single components, we run unit tests as GHDL test-benches to simulate common scenarios for those components. Those can be run manually, but are also executed as part of our CI/CD pipeline. For example, the compressor is tested with message schedule words equal to zero, and the output is compared to the correct output from a verified implementation. The extender is tested similarly, by verifying message schedule words for a given chunk. The comparator is tested to correctly detect hashes within a given threshold according to the Bitcoin specification. We have to note that the testing is performed only in simulation, so problems with the timing (like those of the four-round rolled-out compressor) are not tested at this stage.
+
+%- Was können wir damit abdecken?
+%   - Funktionalität 
+%- Grenzen der Tests zB. Timing
+
+\subsection{Integration Testing}
+
+While Unit testing just shows the correctness for common scenarios for the individual components, integration testing allows us to check the whole chain of components and software used for mining.
+
+Therefore the following aspects have to be checked
+
+\begin{enumerate}
+	\item Are all mining cores running and able to find a block?
+	\item Communication: Host <-> Miner (Simulation/FPGA)
+\end{enumerate}
+
+Regarding the first point, we test whether for several real block headers from the actual blockchain the correct nonces are found. 
+However, this is not enough to show that all our mining cores are actually working. 
+Due to the work distribution described earlier, the hash for the start nonce passed within the header will always be tried out on the first mining core.
+In order to show that all cores are running we have to force the miner to find the hash on a specific core.
+We do this by taking real Bitcoin block headers and decrementing the "correct" nonces of the headers by an offset.
+If, for example, we decrement the nonce by 2 and send it to the implementation, the passed nonce will be calculated on the first core, the next nonce (in this case start nonce + 1) on the second core and therefore the correct nonce (in this case start nonce + 2) on the 3rd core.
+By increasing this offset up to $\textit{number of cores } - 1$ we can show the correct functionality of all cores.
+
+We run the described tests not only against the FPGA but also a GHDL simulation.
+This allows us to detect major problems already prior to the time intensive synthesizing step.
+With this technique we are limited to problems regarding the logic behind the miner.
+Since the simulation does not know anything about the FPGA, we are not able to find physical issues regarding timing and insufficient resources on the FPGA board. Such issues are either detected by a failing synthesizing step or if the tests ran after deployment do not work against the FPGA.
+
+The correctness of the communication is indirectly shown by the tests above, because during execution the miner has to handle all of two request (see section \ref{ssec:externalCommunication}).
+
+%- Was können wir damit abdecken?
+%   - Funktioniert die gesamte Kette Server <-> FPGA 
+%- Was testen wir?
+%	- Werden korrekte Hashes erzeugt und alle die Nonces gefunden?
+%	- Werden Nonces von jedem der Cores gefunden?
+% 	- Funktioniert die Verbindung zum FPGA /Simulation?
