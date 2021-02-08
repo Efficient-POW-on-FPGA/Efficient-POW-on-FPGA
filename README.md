@@ -4,7 +4,7 @@ This repository contains an optimized VHDL implementation of the Bitcoin Proof-O
 
 ## Paper
 
-The source code of the paper related to this code can be found in the documentation directory. It is also published at researchgate.net.
+The source code of the paper related to this code can be found in the documentation directory. It is also published on [Researchgate](https://www.researchgate.net/publication/349111219_Efficient_FPGA_Implementation_of_Blockchain_Operations).
 
 ## Local Execution
 
