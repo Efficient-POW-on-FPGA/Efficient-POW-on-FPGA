@@ -62,11 +62,19 @@ In addition, the progress of a block header can be tracked with the `-f, --follo
 
 ## Contributors
 
-**[Timur Eke](https://github.com/TimurEke), [Nicolas Schapeler](https://github.com/nschapeler), [Christop Starnecker](https://github.com/CStarn), [Florian Weiser](https://github.com/FlorianWeiser)**
+**[Timur Eke](https://github.com/TimurEke), [Nicolas Schapeler](https://github.com/nschapeler), [Christoph Starnecker](https://github.com/CStarn), [Florian Weiser](https://github.com/FlorianWeiser)**
 
-## Project Supervisor
+## Project Supervision
+
+This project was conducted at the Chair of Computer Architecture and Parallel Systems at TUM.
+
+**Prof. Dr. Martin Schulz**
+
+* TUM: [Prof. Dr. rer. nat. Martin Schulz](https://www.in.tum.de/caps/mitarbeiter/martin-schulz/)
 
 **Alexis Engelke**
 
 * TUM: [Alexis Engelke, M. Sc.](https://www.in.tum.de/caps/mitarbeiter/engelke/)
 * GitHub: [@aengelke](https://github.com/aengelke)
+
+Thanks to Michael Jungmair and Tobias Schmidt for being tutors of this project.
