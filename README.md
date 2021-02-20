@@ -62,7 +62,7 @@ In addition, the progress of a block header can be tracked with the `-f, --follo
 
 ## Contributors
 
-**[Timur Eke](https://github.com/TimurEke), [Nicolas Schapeler](https://github.com/nschapeler), [Christop Starnecker](https://github.com/CStarn), [Florian Weiser](https://github.com/FlorianWeiser)**
+**[Timur Eke](https://github.com/TimurEke), [Nicolas Schapeler](https://github.com/nschapeler), [Christoph Starnecker](https://github.com/CStarn), [Florian Weiser](https://github.com/FlorianWeiser)**
 
 ## Project Supervisor
 
